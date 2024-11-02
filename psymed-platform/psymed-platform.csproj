@@ -19,4 +19,8 @@
       <Folder Include="Medication\Application\" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Compile Remove="Medication\Domain\Model\ValueObjects\MedicationFrequency.cs" />
+    </ItemGroup>
+
 </Project>
