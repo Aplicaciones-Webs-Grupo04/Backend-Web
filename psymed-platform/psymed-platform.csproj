@@ -16,4 +16,13 @@
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
     </ItemGroup>
 
+    <ItemGroup>
+        <Folder Include="Appointment_Administration\Domain\Repositories\" />
+        <Folder Include="Appointment_Administration\Domain\Services\" />
+        <Folder Include="Appointment_Administration\Mapping\" />
+        <Folder Include="Appointment_Administration\Persistence\" />
+        <Folder Include="Appointment_Administration\Resources\" />
+        <Folder Include="Appointment_Administration\Services\" />
+    </ItemGroup>
+
 </Project>
