@@ -1,44 +1,33 @@
+using psymed_platform.Shared.Infrastructure.Persistence.EFC.Configuration;
+using psymed_platform.Tasks.Domain.Model.Repositories;
+using psymed_platform.Tasks.Infrastructure.Repositories;
+using psymed_platform.Tasks.Application.Internal.CommandServices;
+using psymed_platform.Tasks.Application.Internal.QueryServices;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+//TODO: falta Configurar la conexión con el MySQL 
+//Nota de sihuar no se logró me sale un error con el mysql :( y en el properties ya configuré el puerto eso falta cambiarlo
+
+// Agrega controladores y Swagger
+builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// Agrega los servicios de tareas
+builder.Services.AddScoped<ITaskRepository, TaskRepository>();
+builder.Services.AddScoped<TaskCommandService>();
+builder.Services.AddScoped<TaskQueryService>();
+
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Habilita Swagger en modo de desarrollo
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
-
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
-
-app.MapGet("/weatherforecast", () =>
-    {
-        var forecast = Enumerable.Range(1, 5).Select(index =>
-                new WeatherForecast
-                (
-                    DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-                    Random.Shared.Next(-20, 55),
-                    summaries[Random.Shared.Next(summaries.Length)]
-                ))
-            .ToArray();
-        return forecast;
-    })
-    .WithName("GetWeatherForecast")
-    .WithOpenApi();
-
+app.UseAuthorization();
+app.MapControllers();
 app.Run();
-
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}
