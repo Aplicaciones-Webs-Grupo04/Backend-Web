@@ -1,4 +1,4 @@
-﻿namespace PsymedPlatform.Tasks.Domain.Model.Commands
+﻿namespace psymed_platform.Tasks.Domain.Model.Commands
 {
     public class CreateTaskCommand
     {
