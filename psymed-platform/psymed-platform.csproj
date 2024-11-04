@@ -21,6 +21,19 @@
 
     <ItemGroup>
       <Compile Remove="Medication\Domain\Model\ValueObjects\MedicationFrequency.cs" />
+      <Compile Remove="Medication\Interfaces\ACL\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Remove="Medication\Interfaces\ACL\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Remove="Medication\Interfaces\ACL\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Medication\Interfaces\ACL\**" />
     </ItemGroup>
 
 </Project>
