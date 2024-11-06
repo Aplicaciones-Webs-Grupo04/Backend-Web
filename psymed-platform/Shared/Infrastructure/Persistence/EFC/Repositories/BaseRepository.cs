@@ -1,4 +1,4 @@
-﻿using psymed_platform.Shared.Domain.Repositories;
+using psymed_platform.Shared.Domain.Repositories;
 using psymed_platform.Shared.Infrastructure.Persistence.EFC.Configuration;
 using Microsoft.EntityFrameworkCore;
 
