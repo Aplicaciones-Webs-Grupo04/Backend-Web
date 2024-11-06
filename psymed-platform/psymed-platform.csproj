@@ -48,4 +48,8 @@
       <None Remove="Medication\Interfaces\ACL\**" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Tasks\Domain\Services\" />
+    </ItemGroup>
+
 </Project>

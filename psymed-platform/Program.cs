@@ -1,3 +1,9 @@
+using psymed_platform.Shared.Infrastructure.Persistence.EFC.Configuration;
+using psymed_platform.Tasks.Domain.Model.Repositories;
+using psymed_platform.Tasks.Infrastructure.Repositories;
+using psymed_platform.Tasks.Application.Internal.CommandServices;
+using psymed_platform.Tasks.Application.Internal.QueryServices;
+
 using Microsoft.EntityFrameworkCore;
 using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 using psymed_platform.Shared.Infrastructure.Persistence.EFC.Configuration;
@@ -19,6 +25,11 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// Agrega los servicios de tareas
+builder.Services.AddScoped<ITaskRepository, TaskRepository>();
+builder.Services.AddScoped<TaskCommandService>();
+builder.Services.AddScoped<TaskQueryService>();
 
 // Registrar UnitOfWork y repositorios
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
