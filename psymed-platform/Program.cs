@@ -40,6 +40,14 @@ builder.Services.AddScoped<IProfileCommandService, ProfileCommandService>();
 
 var app = builder.Build();
 
+// Aplicar migraciones al iniciar la aplicación
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    var context = services.GetRequiredService<AppDbContext>();
+    context.Database.Migrate();
+}
+
 // Habilitar Swagger en modo de desarrollo
 if (app.Environment.IsDevelopment())
 {
@@ -67,7 +75,6 @@ app.MapGet("/weatherforecast", () =>
     })
     .WithName("GetWeatherForecast")
     .WithOpenApi();
-
 
 app.UseAuthorization();
 app.MapControllers();
