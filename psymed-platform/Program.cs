@@ -1,44 +1,16 @@
-using Microsoft.EntityFrameworkCore;
-using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
-using psymed_platform.Shared.Infrastructure.Persistence.EFC.Configuration;
-using psymed_platform.Shared.Infrastructure.Persistence.EFC.Repositories;
-using psymed_platform.Profiles.Domain.Repositories;
-using psymed_platform.Profiles.Application.Internal.CommandServices;
-using psymed_platform.Profiles.Domain.Services;
-using psymed_platform.Profiles.Infrastructure.Persistence.EFC.Repositories;
-using psymed_platform.Shared.Domain.Repositories;
-
 var builder = WebApplication.CreateBuilder(args);
 
-// Configurar la conexión con MySQL
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseMySql(connectionString, new MySqlServerVersion(new Version(8, 0, 21))));
-
-// Agregar controladores y Swagger
-builder.Services.AddControllers();
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
-// Registrar UnitOfWork y repositorios
-builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
-builder.Services.AddScoped<IProfileRepository, ProfileRepository>();
-
-// Registrar servicios de aplicación
-builder.Services.AddScoped<IProfileCommandService, ProfileCommandService>();
+// Mantener solo el redireccionamiento a HTTPS
+builder.Services.AddHttpsRedirection(options =>
+{
+    options.RedirectStatusCode = Microsoft.AspNetCore.Http.StatusCodes.Status307TemporaryRedirect;
+    options.HttpsPort = 5001; // Puedes ajustar el puerto si es necesario
+});
 
 var app = builder.Build();
 
-// Configurar el pipeline de solicitudes HTTP
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
-
+// Solo configurar HTTPS Redirection y agregar el endpoint de clima
 app.UseHttpsRedirection();
-app.UseAuthorization();
-app.MapControllers();
 
 // Endpoint adicional de pronóstico del clima
 var summaries = new[]
