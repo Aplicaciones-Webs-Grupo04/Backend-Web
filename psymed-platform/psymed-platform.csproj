@@ -8,14 +8,17 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
         <PackageReference Include="EFCore.NamingConventions" Version="8.0.3" />
         <PackageReference Include="Humanizer" Version="3.0.0-beta.54" />
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.0" />
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.10" />
         <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.10" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.10">
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
           <PrivateAssets>all</PrivateAssets>
         </PackageReference>
+        <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="8.2.1" />
         <PackageReference Include="MySqlConnector" Version="2.3.7" />
         <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="8.0.2" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
@@ -28,6 +31,10 @@
         <Folder Include="Appointment_Administration\Persistence\" />
         <Folder Include="Appointment_Administration\Resources\" />
         <Folder Include="Appointment_Administration\Services\" />
+        <Folder Include="IAM\Appilcation\Internal\QueryServices\" />
+        <Folder Include="IAM\Domain\Model\Queries\" />
+        <Folder Include="IAM\Domain\Model\Services\" />
+        <Folder Include="IAM\Interfaces\REST\Transform\" />
         <Folder Include="Profiles\" />
     </ItemGroup>
 
