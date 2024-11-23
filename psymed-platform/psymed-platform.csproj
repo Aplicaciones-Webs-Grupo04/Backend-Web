@@ -28,6 +28,10 @@
         <Folder Include="Appointment_Administration\Persistence\" />
         <Folder Include="Appointment_Administration\Resources\" />
         <Folder Include="Appointment_Administration\Services\" />
+        <Folder Include="IAM\Appilcation\Internal\QueryServices\" />
+        <Folder Include="IAM\Domain\Model\Queries\" />
+        <Folder Include="IAM\Domain\Model\Services\" />
+        <Folder Include="IAM\Interfaces\REST\Transform\" />
         <Folder Include="Profiles\" />
     </ItemGroup>
 
