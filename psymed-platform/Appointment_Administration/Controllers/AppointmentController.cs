@@ -19,13 +19,13 @@ public class AppointmentsController : ControllerBase
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Appointment>>> GetAppointments()
     {
-        return await _context.SetEntity<Appointment>().ToListAsync();
+        return await _context.Set<Appointment>().ToListAsync();
     }
 
     [HttpPost]
     public async Task<ActionResult<Appointment>> PostAppointment(Appointment appointment)
     {
-        _context.SetEntity<Appointment>().Add(appointment);
+        _context.Set<Appointment>().Add(appointment);
         await _context.SaveChangesAsync();
         return CreatedAtAction(nameof(GetAppointments), new { id = appointment.Id }, appointment);
     }

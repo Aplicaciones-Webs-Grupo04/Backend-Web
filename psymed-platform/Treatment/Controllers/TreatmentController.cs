@@ -4,7 +4,6 @@ using psymed_platform.Shared.Infrastructure.Persistence.EFC.Configuration;
 
 namespace psymed_platform.Treatment.Controllers;
 
-
 [Route("api/[controller]")]
 [ApiController]
 public class TreatmentController : ControllerBase
@@ -19,13 +18,13 @@ public class TreatmentController : ControllerBase
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Domain.Models.Treatment>>> GetTreatments()
     {
-        return await _context.SetEntity<Domain.Models.Treatment>().ToListAsync();
+        return await _context.Set<Domain.Models.Treatment>().ToListAsync();
     }
 
     [HttpPost]
     public async Task<ActionResult<Domain.Models.Treatment>> PostTreatment(Domain.Models.Treatment treatment)
     {
-        _context.SetEntity<Domain.Models.Treatment>().Add(treatment);
+        _context.Set<Domain.Models.Treatment>().Add(treatment);
         await _context.SaveChangesAsync();
         return CreatedAtAction(nameof(GetTreatments), new { id = treatment.Id }, treatment);
     }
