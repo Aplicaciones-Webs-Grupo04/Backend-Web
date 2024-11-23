@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using psymed_platform.IAM.Application.Internal.CommandServices;
+using psymed_platform.IAM.Appilcation.Internal.CommandServices;
 using psymed_platform.IAM.Domain.Model.Commands;
 using psymed_platform.IAM.Interfaces.REST.Resources;
 

@@ -1,14 +1,15 @@
-﻿using System;
-using System.IdentityModel.Tokens.Jwt;
+﻿using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.IdentityModel.Tokens;
 using psymed_platform.IAM.Domain.Model.Commands;
 using psymed_platform.IAM.Domain.Model.Repositories;
+
 using BC = BCrypt.Net.BCrypt;
 
-namespace psymed_platform.IAM.Application.Internal.CommandServices
+
+namespace psymed_platform.IAM.Appilcation.Internal.CommandServices
 {
     public class AuthCommandService
     {

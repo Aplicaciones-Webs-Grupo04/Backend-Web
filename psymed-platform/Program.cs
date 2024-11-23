@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
-using psymed_platform.IAM.Application.Internal.CommandServices;
+using psymed_platform.IAM.Appilcation.Internal.CommandServices;
 using psymed_platform.IAM.Domain.Model.Repositories;
 using psymed_platform.IAM.Infrastructure.Repositories;
 using psymed_platform.Profiles.Application.Internal.CommandServices;
